@@ -3,7 +3,7 @@
  * @Date: 2022-03-01 15:51:43
  * @LastEditors: Please set LastEditors
  * @LastEditTime: 2022-04-28 15:24:27
- * @FilePath: \web-pc\src\pages\big-screen\view\indexs\right-bottom.vue
+ * @FilePath: \web-pc\src\pages\big-screen\view\indexs\siteInspection.vue
 -->
 <template>
   <div class="right_bottom">

@@ -1,80 +1,62 @@
 <template>
-  <div><Echart :options="options" height="300px" /></div>
+  <div class="kh-content">
+    <div class="kh-row">
+      <div class="ku-item">
+        <div class="kh-label">已注册企业</div>
+        <div class="kh-value">930</div>
+      </div>
+      <div class="ku-item">
+        <div class="kh-label">几年注册企业</div>
+        <div class="kh-value">930</div>
+      </div>
+    </div>
+
+    <div class="kh-row">
+      <div class="ku-item">
+        <div class="kh-label">已注册企业</div>
+        <div class="kh-value">930</div>
+      </div>
+      <div class="ku-item">
+        <div class="kh-label">几年注册企业</div>
+        <div class="kh-value">123123</div>
+      </div>
+    </div>
+
+    <div class="kh-row">
+      <div class="ku-item">
+        <div class="kh-label">已注册企业</div>
+        <div class="kh-value">930</div>
+      </div>
+      <div class="ku-item">
+        <div class="kh-label">几年注册企业</div>
+        <div class="kh-value">930</div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      options: {
-        legend: {
-          textStyle: {
-            color: '#5692fd',
-          },
-        },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow',
-          },
-        },
-        xAxis: {
-          axisLine: {
-            show: false,
-          },
-          axisLabel: {
-            show: false,
-          },
-          splitLine: {
-            show: false,
-          },
-        },
-        yAxis: {
-          type: 'category',
-          data: ['存证文件', '存证报告'],
-          axisLabel: {
-            fontSize: 10,
-            color: '#5692fd',
-          },
-        },
-        series: [
-          {
-            name: '本月',
-            type: 'bar',
-            data: [360, 230],
-            label: {
-              show: true,
-              position: 'right',
-              valueAnimation: true,
-            },
-
-            itemStyle: {
-              color: '#5692fd',
-            },
-          },
-          {
-            name: '今年',
-            type: 'bar',
-            data: [420, 360],
-            label: {
-              show: true,
-              position: 'right',
-              valueAnimation: true,
-            },
-            itemStyle: {
-              color: '#8dfdae',
-            },
-          },
-        ],
-      },
-    }
-  },
-}
-</script>
-
 <style lang="scss">
-.echarts_bottom {
-  width: 100%;
-  height: 100%;
+.kh-row {
+  display: flex;
+  justify-content: space-between;
+  line-height: 40px;
+  width: 500px;
+  margin-bottom: 30px;
+}
+.kh-content {
+  padding: 20px 30px;
+  color: #56a2fd;
+}
+.ku-item {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  .kh-label {
+    margin-right: 20px;
+  }
+  .kh-value {
+    font-weight: bold;
+    font-size: 26px;
+  }
 }
 </style>

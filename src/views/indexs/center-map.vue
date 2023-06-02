@@ -7,35 +7,31 @@
 -->
 <template>
   <div class="centermap">
-<!--    <div class="maptitle">-->
-<!--      <div class="zuo"></div>-->
-<!--      <span class="titletext">{{ maptitle }}</span>-->
-<!--      <div class="you"></div>-->
-<!--    </div>-->
+    <!--    <div class="maptitle">-->
+    <!--      <div class="zuo"></div>-->
+    <!--      <span class="titletext">{{ maptitle }}</span>-->
+    <!--      <div class="you"></div>-->
+    <!--    </div>-->
     <div class="mapwrap">
       <dv-border-box-13>
-        <div
-          class="quanguo"
-          @click="getData(-1)"
-          v-if="code !== 'china' && userCode == -1"
-        >
+        <div class="quanguo" @click="getData(-1)" v-if="code !== 'china' && userCode == -1">
           中国
         </div>
         <div class="text-position">
           <div class="text-item">
             <div class="t-name">合作仓库</div>
-            <div class="t-value">90630</div>
+            <div class="t-value">{{ mapData.cooperativeWarehouse }}</div>
           </div>
           <div class="text-item">
             <div class="t-name">采集设备数量</div>
-            <div class="t-value">500</div>
+            <div class="t-value">{{ this.mapData.numberOfAcquisitionEquipment }}</div>
           </div>
           <div class="text-item">
             <div class="t-name">监控设备数量</div>
-            <div class="t-value">600</div>
+            <div class="t-value">{{ this.mapData.numberOfMonitoringEquipment }}</div>
           </div>
         </div>
-        <Echart id="CenterMap" :options="options" ref="CenterMap" />
+        <Echart id="CenterMap" :options="options" ref="CenterMap"/>
       </dv-border-box-13>
     </div>
   </div>
@@ -43,8 +39,9 @@
 
 <script>
 import xzqCode from '../../utils/map/xzqCode'
-import { currentGET } from 'api/modules'
-import { GETNOBASE } from 'api'
+import {currentGET} from 'api/modules'
+import {GETNOBASE} from 'api'
+
 export default {
   data() {
     return {
@@ -53,17 +50,24 @@ export default {
       code: 'china',
       userCode: -1, //-1 代表中国 用户权限的行政区code
       echartBindClick: false,
+      mapData: {
+        cooperativeWarehouse: "",
+        numberOfAcquisitionEquipment: "",
+        numberOfMonitoringEquipment: ""
+      }
     }
   },
-  created() {},
+  created() {
+  },
 
   mounted() {
     // console.log(xzqCode);
     this.getData()
+    this.getMapData()
   },
   methods: {
     getData(code) {
-      currentGET('big8', { regionCode: code }).then((res) => {
+      currentGET('big8', {regionCode: code}).then((res) => {
         if (res.success) {
           if (!code) {
             this.userCode = res.data.regionCode
@@ -73,6 +77,16 @@ export default {
         } else {
           this.$Message.warning(res.msg)
         }
+      })
+    },
+
+    getMapData() {
+      const url = "http://rap2api.taobao.org/app/mock/312225/getMapData"
+      this.$http.get(url, this.mapData).then(res => {
+        console.log(res)
+        this.mapData.cooperativeWarehouse = res.cooperativeWarehouse;
+        this.mapData.numberOfAcquisitionEquipment = res.numberOfAcquisitionEquipment;
+        this.mapData.numberOfMonitoringEquipment = res.numberOfMonitoringEquipment;
       })
     },
     getGeojson(name, mydata) {
@@ -86,7 +100,7 @@ export default {
         let arr = res.features
         arr.map((item) => {
           cityCenter[item.properties.name] =
-            item.properties.centroid || item.properties.center
+              item.properties.centroid || item.properties.center
         })
         let newData = []
         // console.log('中心点',cityCenter);
@@ -148,12 +162,12 @@ export default {
           left: 20,
           bottom: 20,
           pieces: [
-            { gte: 1000, label: '1000个以上' }, // 不指定 max，表示 max 为无限大（Infinity）。
-            { gte: 600, lte: 999, label: '600-999个' },
-            { gte: 200, lte: 599, label: '200-599个' },
-            { gte: 50, lte: 199, label: '49-199个' },
-            { gte: 10, lte: 49, label: '10-49个' },
-            { lte: 9, label: '1-9个' }, // 不指定 min，表示 min 为无限大（-Infinity）。
+            {gte: 1000, label: '1000个以上'}, // 不指定 max，表示 max 为无限大（Infinity）。
+            {gte: 600, lte: 999, label: '600-999个'},
+            {gte: 200, lte: 599, label: '200-599个'},
+            {gte: 50, lte: 199, label: '49-199个'},
+            {gte: 10, lte: 49, label: '10-49个'},
+            {lte: 9, label: '1-9个'}, // 不指定 min，表示 min 为无限大（-Infinity）。
           ],
           inRange: {
             // 渐变颜色，从小到大
@@ -233,7 +247,7 @@ export default {
                 }
               },
               rich: {},
-              emphasis: { show: false },
+              emphasis: {show: false},
             },
             itemStyle: {
               borderColor: 'rgba(147, 235, 248, .8)',
@@ -344,7 +358,8 @@ export default {
       })
       this.echartBindClick = true
     },
-  },
+  }
+  ,
 }
 </script>
 <style lang="scss" scoped>
@@ -353,12 +368,15 @@ export default {
   right: 20px;
   top: 200px;
   color: #56a2fd;
+
   .text-item {
     margin-bottom: 26px;
     text-align: right;
+
     .t-name {
       font-size: 16px;
     }
+
     .t-value {
       font-weight: bold;
       font-size: 24px;
@@ -366,6 +384,7 @@ export default {
     }
   }
 }
+
 .centermap {
   margin-bottom: 30px;
 
@@ -381,10 +400,10 @@ export default {
       font-weight: 900;
       letter-spacing: 6px;
       background: linear-gradient(
-        92deg,
-        #0072ff 0%,
-        #00eaff 48.8525390625%,
-        #01aaff 100%
+              92deg,
+              #0072ff 0%,
+              #00eaff 48.8525390625%,
+              #01aaff 100%
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -418,7 +437,7 @@ export default {
     .quanguo {
       position: absolute;
       right: 20px;
-      top: -46px;
+      top: 46px;
       width: 80px;
       height: 28px;
       border: 1px solid #00eded;
@@ -429,7 +448,7 @@ export default {
       letter-spacing: 6px;
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0, 237, 237, 0.5),
-        0 0 6px rgba(0, 237, 237, 0.4);
+      0 0 6px rgba(0, 237, 237, 0.4);
     }
   }
 }

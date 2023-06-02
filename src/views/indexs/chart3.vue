@@ -1,45 +1,36 @@
 <template>
-  <div class="rz-wapper">
-    <div class="rz-block">
-      <span>客户累计融资</span>
-      <span class="rz-moneny">186.350</span>
-      <span>万元</span>
-    </div>
-    <div class="rz-slider-wrapper">
-      <div class="rz-slider-item">
-        <div class="rz-slider-row">
-          <div class="rz-slider-color">
-            <span>今年融资完成率</span>
-          </div>
-          <span class="rz-text">86%</span>
-        </div>
-
-        <div class="rz-target-text">
-          <span>已完成 6,666.980万元</span>
-          <span>目标 9,996.980万元</span>
-        </div>
-      </div>
-
-      <div class="rz-slider-item">
-        <div class="rz-slider-row">
-          <div class="rz-slider-color">
-            <span>今年融资完成率</span>
-          </div>
-          <span class="rz-text">86%</span>
-        </div>
-
-        <div class="rz-target-text">
-          <span>已完成 6,666.980万元</span>
-          <span>目标 9,996.980万元</span>
-        </div>
-      </div>
-    </div>
+  <div>
+    <Echart :options="options" height="300px"/>
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {}
+    return {
+      options:{
+        series: [
+          {
+            type: 'pie',
+            data: [
+              {
+                value: 335,
+                name: '直接访问'
+              },
+              {
+                value: 234,
+                name: '联盟广告'
+              },
+              {
+                value: 1548,
+                name: '搜索引擎'
+              }
+            ],
+            radius: '70%'
+          }
+        ]
+      }
+
+    }
   },
 }
 </script>
@@ -47,9 +38,11 @@ export default {
 .rz-wapper {
   padding: 0 30px;
 }
+
 .rz-slider-item {
   margin-bottom: 30px;
 }
+
 .rz-slider-row {
   width: 100%;
   height: 26px;
@@ -62,11 +55,13 @@ export default {
   padding-right: 6px;
   box-sizing: border-box;
 }
+
 .rz-text {
   position: absolute;
   right: 6px;
   top: 0;
 }
+
 .rz-slider-color {
   width: 315px;
   height: 26px;
@@ -75,6 +70,7 @@ export default {
   padding-left: 6px;
   box-sizing: border-box;
 }
+
 .rz-target-text {
   display: flex;
   justify-content: space-between;
@@ -82,11 +78,13 @@ export default {
   font-size: 18px;
   margin-top: 10px;
 }
+
 .rz-block {
   color: #56a2fd;
   font-size: 18px;
   margin-bottom: 30px;
 }
+
 .rz-moneny {
   font-size: 30px;
   margin-left: 20px;

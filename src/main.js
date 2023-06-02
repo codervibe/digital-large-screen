@@ -54,12 +54,14 @@ Vue.use(capsuleChart)
 Vue.use(borderBox12)
 
 Vue.use(scrollRankingBoard)
-
+Vue.use(axios)
 Vue.use(ElementUI)
 // 全局数据过滤器
 Object.keys(filters).forEach((k) => Vue.filter(k, filters[k]))
 new Vue({
+  el: '#app',
   router,
+  ElementUI,
   store,
   render: (h) => h(App),
 }).$mount('#app')

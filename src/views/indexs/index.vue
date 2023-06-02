@@ -24,32 +24,22 @@
     </div>
     <div class="contetn_center">
       <CenterMap class="contetn_center_top" />
-      <ItemWrap class="contetn_center-bottom" title="客户数据">
-        <Khsj />
+      <ItemWrap class="contetn_center-bottom" title="一标三实统计">
+        <oneStandardThreeRealStatistics />
       </ItemWrap>
     </div>
     <div class="contetn_right">
-      <ItemWrap
-        class="contetn_left-bottom contetn_lr-item"
-        style="height: 380px"
-        title="保险数据"
-      >
+      <ItemWrap class="contetn_left-bottom contetn_lr-item" style="height: 380px" title="人员管控">
         <div class="bxsj">
-          <Chart1 class="mb-20" />
-          <Chart1 />
+<!--          <Chart1 class="mb-20" />
+          <Chart1 />-->
+          <personnelControl/>
         </div>
       </ItemWrap>
-      <ItemWrap
-        class="contetn_left-bottom contetn_lr-item"
-        title="仓储物数据"
-        style="padding: 0 10px 16px 10px"
-      >
+      <ItemWrap class="contetn_left-bottom contetn_lr-item" title="场所检查" style="padding: 0 10px 16px 10px">
+        <Khsj />
       </ItemWrap>
-      <ItemWrap
-        class="contetn_left-bottom contetn_lr-item"
-        title="存证数据 "
-        style="padding: 0 10px 16px 30px"
-      >
+      <ItemWrap class="contetn_left-bottom contetn_lr-item" title="存证数据 " style="padding: 0 10px 16px 10px">
         <RightBottom />
       </ItemWrap>
     </div>
@@ -68,7 +58,9 @@ import RightBottom from './right-bottom.vue'
 import Chart1 from './chart1.vue'
 import Chart2 from './chart2.vue'
 import Chart3 from './chart3.vue'
-import Khsj from './khsj.vue'
+import Khsj from './siteInspection.vue'
+import oneStandardThreeRealStatistics from './oneStandardThreeRealStatistics.vue'
+import personnelControl from './personnelControl.vue'
 export default {
   components: {
     LeftTop,
@@ -83,6 +75,8 @@ export default {
     Chart2,
     Chart3,
     Khsj,
+    oneStandardThreeRealStatistics,
+    personnelControl
   },
   data() {
     return {}
@@ -102,6 +96,9 @@ export default {
 // 内容
 .bxsj {
   padding: 20px 30px;
+}
+.contetn_left-center{
+  padding: 0px 0px 0 0;
 }
 .chart-top-left {
   padding: 20px 30px;
