@@ -22,7 +22,7 @@
           <div class="guang"></div>
           <div class="d-flex jc-center">
             <div class="title">
-              <span class="title-text">动态感知平台</span>
+              <span class="title-text">互联网设备可视化平台</span>
 <!--              <span class="title-text"全平台自动感知</span>-->
             </div>
           </div>
