@@ -7,11 +7,11 @@
 -->
 <template>
   <div class="centermap">
-    <!--    <div class="maptitle">-->
-    <!--      <div class="zuo"></div>-->
-    <!--      <span class="titletext">{{ maptitle }}</span>-->
-    <!--      <div class="you"></div>-->
-    <!--    </div>-->
+<!--    <div class="maptitle">-->
+<!--&lt;!&ndash;      <div class="zuo"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <span class="titletext">{{ maptitle }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="you"></div>&ndash;&gt;-->
+<!--    </div>-->
     <div class="mapwrap">
       <dv-border-box-13>
         <div class="quanguo" @click="getData(-1)" v-if="code !== 'china' && userCode == -1">
@@ -45,7 +45,6 @@ import {GETNOBASE} from 'api'
 export default {
   data() {
     return {
-      maptitle: '',
       options: {},
       code: 'china',
       userCode: -1, //-1 代表中国 用户权限的行政区code

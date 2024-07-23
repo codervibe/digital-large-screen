@@ -22,7 +22,8 @@
           <div class="guang"></div>
           <div class="d-flex jc-center">
             <div class="title">
-              <span class="title-text">聊城市高唐县公安局开发区派出所智慧派出所平台</span>
+              <span class="title-text">动态感知平台</span>
+<!--              <span class="title-text"全平台自动感知</span>-->
             </div>
           </div>
           <div class="timers">

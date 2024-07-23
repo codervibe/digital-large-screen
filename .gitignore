@@ -1,12 +1,12 @@
 .DS_Store
 node_modules
 /dist
-
+./src/back
 
 # local env files
 .env.local
 .env.*.local
-./back/
+./back
 # Log files
 npm-debug.log*
 yarn-debug.log*

@@ -24,7 +24,7 @@ export default {
         xAxis: {
 
           type: 'category',
-          data: ['扁鹊', '程咬金', '韩信', '貂蝉', '安琪拉', '老夫子'],
+          data: ['实有人口' ,'实有建筑物', '实有房屋' ,'实有单位'],
           axisLabel: {
             fontSize: 10,
             color: '#5692fd',
@@ -45,7 +45,7 @@ export default {
           {
             name: '采集量',
             type: 'line',
-            data: [542,48,69,58,54,784],
+            data: [542,48,69,58,],
             label: {
               show: true,
               position: 'right',
@@ -59,7 +59,7 @@ export default {
           {
             name: '更新量',
             type: 'line',
-            data: [147,485,123,154,561,87],
+            data: [147,485,123,154,],
             itemStyle: {
               color: '#f8a714',
             },
@@ -67,7 +67,7 @@ export default {
           {
             name: '走访量',
             type: 'line',
-            data: [48,158,254,51,278,159],
+            data: [48,158,254,51,],
             itemStyle: {
               color: '#072365',
             },
